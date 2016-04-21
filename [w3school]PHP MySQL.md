@@ -334,6 +334,7 @@ SELECT column FROM table
 WHERE column operator value
 ```
 下面的运算符可与`WHERE` 子句一起使用：
+
 运算符 | 说明
 -------|-----
 = | 等于
@@ -344,6 +345,7 @@ WHERE column operator value
 <= | 小于或等于
 BETWEEN | 介于一个包含范围内
 LIKE | 搜索匹配的模式
+
 **注释**：SQL 语句对大小写不敏感。`WHERE` 与 `where` 等效。
 **PHP**使用 `mysql_query()` 函数
 例子：
