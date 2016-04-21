@@ -9,7 +9,7 @@
 在**分类存储**信息时，**数据库**非常有用。一个公司的数据库可能拥有这些表："Employees", "Products", "Customers" 以及 "Orders"。
 ###数据库表
 **数据库**通常包含*一个*或*多个* **表**。每个**表都一个名称**（比如 "Customers" 或 "Orders"）。每个**表包含带有数据的记录（行）**。
-![Alt text](./form.png)
+![Alt text](https://app.yinxiang.com/shard/s4/res/de6a26e0-108e-46ab-a287-d9613be241f3/form.png?resizeSmall&width=1920)
 上面的**表**含有三个记录（每个记录是一个人）和四个列（LastName, FirstName, Address 以及 City）。
 ###查询
 查询是**一种询问或请求**。
@@ -17,7 +17,7 @@
 一条查询语句：
 `SELECT LastName FROM Persons`
 上面的查询选取了 **Persons** 表中 **LastName** 列的所有数据，并返回类似这样的记录集：
-![Alt text](./form2.png)
+![Alt text](https://app.yinxiang.com/shard/s4/res/d36414b7-613f-47b2-a369-392dbb9c2917/form2.png?resizeSmall&width=1920)
 ###PHP 连接到一个 MySQL 数据库
 在您能够访问并处理数据库中的数据之前，您必须创建到达**数据库的连接**。
 在 PHP 中，这个任务通过 `mysql_connect()` 函数完成。
