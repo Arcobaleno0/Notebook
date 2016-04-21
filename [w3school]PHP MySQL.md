@@ -23,11 +23,13 @@ Pettersen| Kari      | Storgt 20    | Stavanger
 一条查询语句：
 `SELECT LastName FROM Persons`
 上面的查询选取了 **Persons** 表中 **LastName** 列的所有数据，并返回类似这样的记录集：
+
 |LastName
 |---
 |Hansen
 |Svendson
 |Pettersen
+
 ###PHP 连接到一个 MySQL 数据库
 在您能够访问并处理数据库中的数据之前，您必须创建到达**数据库的连接**。
 在 PHP 中，这个任务通过 `mysql_connect()` 函数完成。
