@@ -9,11 +9,13 @@
 在**分类存储**信息时，**数据库**非常有用。一个公司的数据库可能拥有这些表："Employees", "Products", "Customers" 以及 "Orders"。
 ###数据库表
 **数据库**通常包含*一个*或*多个* **表**。每个**表都一个名称**（比如 "Customers" 或 "Orders"）。每个**表包含带有数据的记录（行）**。
+
 LastName | FirstName |    Address   |  City
 ---------|-----------|--------------|---------
 Hansen   | Ola       | Timoteivn 10 | Sandnes
 Svendson | Tove      | Borgvn 23    | Sandnes
 Pettersen| Kari      | Storgt 20    | Stavanger
+
 上面的**表**含有三个记录（每个记录是一个人）和四个列（LastName, FirstName, Address 以及 City）。
 ###查询
 查询是**一种询问或请求**。
