@@ -153,7 +153,7 @@ int(size)<br>smallint(size)<br>tinyint(size)<br>mediumint(size)<br>bigint(size)	
 decimal(size,d)<br>double(size,d)<br>float(size,d)			|支持带有小数的数字。在 size 参数中规定数字的最大值。在 d 参数中规定小数点右侧的数字的最大值。
 
 文本数据类型 | 描述
--|-
+-------------|------
 char(size) | 支持固定长度的字符串。（可包含字母、数字以及特殊符号）。在 size 参数中规定固定长度。
  varchar(size) | 支持可变长度的字符串。（可包含字母、数字以及特殊符号）。在 size 参数中规定最大长度。
  tinytext | 支持可变长度的字符串，最大长度是 255 个字符。
@@ -162,7 +162,7 @@ char(size) | 支持固定长度的字符串。（可包含字母、数字以及�
  longtext<br>longblob | 支持可变长度的字符串，最大长度是 4294967295 个字符。
 
 日期数据类型 | 描述
--|-
+-------------|------
 date(yyyy-mm-dd)<br>datetime(yyyy-mm-dd hh:mm:ss)<br>timestamp(yyyymmddhhmmss)<br>time(hh:mm:ss) | 支持日期或时间
 
 杂项数据类型 | 描述
