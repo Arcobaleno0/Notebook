@@ -1,5 +1,5 @@
 #PHP MySQL
-@(PHP)[马克飞象, PHP, MySQL]<br>
+@(PHP)[马克飞象, PHP, MySQL]
 老生常谈：**MySQL**是最流行的开源数据库服务器
 熟能生巧：对数据库的操作（**增** **删** **改** **查** ）
 <hr>
@@ -9,7 +9,11 @@
 在**分类存储**信息时，**数据库**非常有用。一个公司的数据库可能拥有这些表："Employees", "Products", "Customers" 以及 "Orders"。
 ###数据库表
 **数据库**通常包含*一个*或*多个* **表**。每个**表都一个名称**（比如 "Customers" 或 "Orders"）。每个**表包含带有数据的记录（行）**。
-![Alt text](https://app.yinxiang.com/shard/s4/res/de6a26e0-108e-46ab-a287-d9613be241f3/form.png?resizeSmall&width=1920)
+LastName | FirstName |    Address   |  City
+---------|-----------|--------------|---------
+Hansen   | Ola       | Timoteivn 10 | Sandnes
+Svendson | Tove      | Borgvn 23    | Sandnes
+Pettersen| Kari      | Storgt 20    | Stavanger
 上面的**表**含有三个记录（每个记录是一个人）和四个列（LastName, FirstName, Address 以及 City）。
 ###查询
 查询是**一种询问或请求**。
@@ -17,13 +21,21 @@
 一条查询语句：
 `SELECT LastName FROM Persons`
 上面的查询选取了 **Persons** 表中 **LastName** 列的所有数据，并返回类似这样的记录集：
-![Alt text](https://app.yinxiang.com/shard/s4/res/d36414b7-613f-47b2-a369-392dbb9c2917/form2.png?resizeSmall&width=1920)
+|LastName
+|---
+|Hansen
+|Svendson
+|Pettersen
 ###PHP 连接到一个 MySQL 数据库
 在您能够访问并处理数据库中的数据之前，您必须创建到达**数据库的连接**。
 在 PHP 中，这个任务通过 `mysql_connect()` 函数完成。
 语法：
 `mysql_connect(servername,username,password);`
-![Alt text](./mess.png)
+参数   |  描述
+-|
+servername | 可选。规定要连接的服务器。默认是 "localhost:3306"。
+username  |  可选。规定登录所使用的用户名。默认值是拥有服务器进程的用户的名称。
+password  |  可选。规定登录所用的密码。默认是 ""。
 注释：虽然还存在其他的参数，但上面列出了最重要的参数。请访问 [W3School 提供的 PHP MySQL 参考手册](http://www.w3school.com.cn/php/php_ref_mysql.asp)，获得更多的细节信息。
 例子
 在下面的例子中，我们在一个变量中 (`$con`) **存放了在脚本中供稍后使用的连接**。如果连接失败，将执行 "die" (`stop()`函数的别名)部分：
@@ -131,7 +143,30 @@ mysql_close($con);
 <b style="color:red">重要事项：</b>在创建表之前，必须首先选择数据库。通过 `mysql_select_db()` 函数选取数据库。
 
 ###MySQL 数据类型
-![Alt text](./shujuleixing.png)
+数值类型 | 描述
+-|
+int(size)<br>smallint(size)<br>tinyint(size)<br>mediumint(size)<br>bigint(size)			|	仅支持整数。在 size 参数中规定数字的最大值。
+decimal(size,d)<br>double(size,d)<br>float(size,d)			|支持带有小数的数字。在 size 参数中规定数字的最大值。在 d 参数中规定小数点右侧的数字的最大值。
+
+文本数据类型 | 描述
+-|
+char(size) | 支持固定长度的字符串。（可包含字母、数字以及特殊符号）。在 size 参数中规定固定长度。
+ varchar(size) | 支持可变长度的字符串。（可包含字母、数字以及特殊符号）。在 size 参数中规定最大长度。
+ tinytext | 支持可变长度的字符串，最大长度是 255 个字符。
+ text<br>blob | 支持可变长度的字符串，最大长度是 65535 个字符。
+ mediumtext<br>mediumblob | 支持可变长度的字符串，最大长度是 16777215 个字符。
+ longtext<br>longblob | 支持可变长度的字符串，最大长度是 4294967295 个字符。
+
+日期数据类型 | 描述
+-|
+date(yyyy-mm-dd)<br>datetime(yyyy-mm-dd hh:mm:ss)<br>timestamp(yyyymmddhhmmss)<br>time(hh:mm:ss) | 支持日期或时间
+
+杂项数据类型 | 描述
+-|
+enum(value1,value2,ect) | ENUM 是 ENUMERATED 列表的缩写。可以在括号中存放最多 65535 个值。
+set | SET 与 ENUM 相似。但是，SET 可拥有最多 64 个列表项目，并可存放不止一个 choice
+
+
 ###主键和自动递增字段
 每个表都应有一个**主键字段**。
 **主键**用于对表中的**行**进行**唯一标识**。每个**主键值在表中必须是唯一**的。此外，**主键字段不能为空**，这是由于数据库引擎需要一个值来对记录进行定位。
@@ -295,7 +330,16 @@ SELECT column FROM table
 WHERE column operator value
 ```
 下面的运算符可与`WHERE` 子句一起使用：
-![Alt text](./whereziju.png)
+运算符 | 说明
+-|
+= | 等于
+!= | 不等于
+> | 大于
+<  | 小于
+>= | 大于或等于
+<= | 小于或等于
+BETWEEN | 介于一个包含范围内
+LIKE | 搜索匹配的模式
 **注释**：SQL 语句对大小写不敏感。`WHERE` 与 `where` 等效。
 **PHP**使用 `mysql_query()` 函数
 例子：
