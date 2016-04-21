@@ -147,10 +147,12 @@ mysql_close($con);
 <b style="color:red">重要事项：</b>在创建表之前，必须首先选择数据库。通过 `mysql_select_db()` 函数选取数据库。
 
 ###MySQL 数据类型
+
 数值类型 | 描述
 -|
 int(size)<br>smallint(size)<br>tinyint(size)<br>mediumint(size)<br>bigint(size)			|	仅支持整数。在 size 参数中规定数字的最大值。
 decimal(size,d)<br>double(size,d)<br>float(size,d)			|支持带有小数的数字。在 size 参数中规定数字的最大值。在 d 参数中规定小数点右侧的数字的最大值。
+
 
 文本数据类型 | 描述
 -|
