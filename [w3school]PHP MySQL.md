@@ -153,7 +153,7 @@ int(size)<br>smallint(size)<br>tinyint(size)<br>mediumint(size)<br>bigint(size)	
 decimal(size,d)<br>double(size,d)<br>float(size,d)			|支持带有小数的数字。在 size 参数中规定数字的最大值。在 d 参数中规定小数点右侧的数字的最大值。
 
 文本数据类型 | 描述
--------------|------
+-------------|-----
 char(size) | 支持固定长度的字符串。（可包含字母、数字以及特殊符号）。在 size 参数中规定固定长度。
  varchar(size) | 支持可变长度的字符串。（可包含字母、数字以及特殊符号）。在 size 参数中规定最大长度。
  tinytext | 支持可变长度的字符串，最大长度是 255 个字符。
@@ -162,11 +162,11 @@ char(size) | 支持固定长度的字符串。（可包含字母、数字以及�
  longtext<br>longblob | 支持可变长度的字符串，最大长度是 4294967295 个字符。
 
 日期数据类型 | 描述
--------------|------
+-------------|-----
 date(yyyy-mm-dd)<br>datetime(yyyy-mm-dd hh:mm:ss)<br>timestamp(yyyymmddhhmmss)<br>time(hh:mm:ss) | 支持日期或时间
 
 杂项数据类型 | 描述
--|-
+-------------|-----
 enum(value1,value2,ect) | ENUM 是 ENUMERATED 列表的缩写。可以在括号中存放最多 65535 个值。
 set | SET 与 ENUM 相似。但是，SET 可拥有最多 64 个列表项目，并可存放不止一个 choice
 
