@@ -17,24 +17,27 @@
 
 ###2.建立模块的基本目录结构
 新建个**test**模块，再在**phpcms/modules**目录下新建个test目录
-在依次新建**classes**、**functions**、**install**、**templdates**、**uninstall**目录，
+在依次新建 **classes**、**functions**、**install**、**templdates**、**uninstall** 目录，
 
 ###3.新建模块配置文件
-在install目录下新建一个**config.inc.php**文件，
-`defined('IN_PHPCMS') or exit('Access Denied');`
-`defined('INSTALL') or exit('Access Denied');`
-`$module = 'test'; `//模块的标识符，唯一性，不可重名,应该和目录同名
-`$modulename = '测试';` 
-`$introduce = '测试模块，用来测试的';`
-`$author = '子海';`
-`$authorsite = 'http://www.zihaidetiandi.com';`
-`$authoremail = 'zihaidetiandi@sina.com';`
+在 **install** 目录下新建一个 **config.inc.php** 文件，
+```php
+defined('IN_PHPCMS') or exit('Access Denied');
+defined('INSTALL') or exit('Access Denied');
+$module = 'test'; //模块的标识符，唯一性，不可重名,应该和目录同名
+$modulename = '测试';
+$introduce = '测试模块，用来测试的';
+$author = '子海';
+$authorsite = 'http://www.zihaidetiandi.com';
+$authoremail = 'zihaidetiandi@sina.com';
+```
+
 
 ###4.查看模块配置信息
-进入后台，打开**模块**->**模块管理**，找到**test**模块，不要急着点确定，因为许多安装之前的工作，我们还没有完成。
+进入后台，打开 **模块**->**模块管理**，找到 **test** 模块，不要急着点确定，因为许多安装之前的工作，我们还没有完成。
 
 ###5.添加模块主菜单
-在新建的**test**模块目录下的**install**目录里，新建个**extention.inc.php**文件，用编辑器打开,填写以下代码，<b style="color:red;">注意</b>，**parentid**中的**29**是模块菜单的**Id**号，如果要在主菜单显示，可以**parentid**的值改为**0**，如果要在指定菜单中显示，可以把**parentid**改成对应菜单**id**的值即可，菜单的**id**可以在扩展中的菜单管理中查看。
+在新建的 **test** 模块目录下的 **install** 目录里，新建个 **extention.inc.php** 文件，用编辑器打开,填写以下代码，<b style="color:red;">注意</b>，**parentid**中的**29**是模块菜单的**Id**号，如果要在主菜单显示，可以**parentid**的值改为**0**，如果要在指定菜单中显示，可以把**parentid**改成对应菜单**id**的值即可，菜单的**id**可以在扩展中的菜单管理中查看。
 ```php
 <?php
 defined('IN_PHPCMS') or exit('Access Denied');
@@ -53,7 +56,7 @@ $language = array('test'=>'测试');//$language 数组中的值会追加到 syst
 ?>
 ```
 ###6.新建模块后类文件和模板文件
-**phpcms**的**url**是这样的`index.php?m=admin&c=index&a=public_main`,**m**的值表示是**模块名**，**c**表示是**类名**，**a**表示的是**类的方法名**，在上一步中，我们已经向菜单表中插入一条**模块名为test**，**类名为test**，**方法名为init**的条菜单记录。所以就必需在**test**模块(即test根目录)中新建一个**test类文件**，并添加**init方法**，
+**phpcms** 的 **url** 是这样的 **index.php?m=admin&c=index&a=public_main** ,**m** 的值表示是 **模块名**，**c** 表示是 **类名**，**a** 表示的是 **类的方法名**，在上一步中，我们已经向菜单表中插入一条 **模块名为test**，**类名为test**，**方法名为init** 的条菜单记录。所以就必需在 **test** 模块(即test根目录)中新建一个 **test类文件**，并添加 **init方法**，
 ```php
 defined('IN_PHPCMS') or exit('No permission resources.');
 pc_base::load_app_class('admin','admin',0);
@@ -67,7 +70,7 @@ class test extends admin {
      }
 }
 ```
-如果方法要**调用模板文件**，还必需要在 test/**templdates目录下** 新建对应模块，如上述代码中，我们调用了一个test模板文件，现在我们也新建个**test.tpl.php**文件
+如果方法要**调用模板文件**，还必需要在  **test/templdates目录下** 新建对应模块，如上述代码中，我们调用了一个 **test** 模板文件，现在我们也新建个 **test.tpl.php** 文件
 ```php
 <?php
 defined('IN_ADMIN') or exit('No permission resources.');
@@ -80,7 +83,7 @@ include $this->admin_tpl('header','admin');
 </html>
 ```
 ###7.向模块表中插入模块安装信息并试安装模块
-在**install**目录新建个**modules.sql**文件写上以下代码
+在 **install** 目录新建个 **modules.sql** 文件写上以下代码
 ```php
 INSERT INTO `phpcms_module` (
            `module`, `name`, `url`, `iscore`, `version`, `description`, `setting`, `listorder`, `disabled`, `installdate`, `updatedate`)VALUES ('test', '测试', '', '0', '1.0', '', '', '0', '0', '2010-09-06', '2010-09-06');
@@ -88,23 +91,23 @@ INSERT INTO `phpcms_module` (
 因为字段的名称已经很好的阐述了字段的作用，所以我只对解释 **iscore**、**disabled** 和 **setting** 三个字段稍作解释，**iscore** 如果为**1**,表示是系统内置模块，是必选模块，对于二次开发来说，我们填写值为**0** 即可。**disabled** 如果为 **1** 表示禁止卸载，如果为 **0** 表示可卸载，对于我们来说，当然也是填 **0** 值。**setting** 是模块的配置变量，用来设置模块的一些基本信息，值为一个字符串数组。例如，表单向导中的模块配置功能。
 #####此时在后台已经可以查看效果了
 ###8.新建模块子菜单
-再次打开**extention.inc.php**，我们向菜单表中追加几个菜单
+再次打开 **extention.inc.php**，我们向菜单表中追加几个菜单
 ```php
 $menu_db->insert(array('name'=>'add_test', 'parentid'=>$parentid, 'm'=>'test', 'c'=>'test', 'a'=>'add_test', 'data'=>'', 'listorder'=>0, 'display'=>'1'));
 $menu_db->insert(array('name'=>'edit_test', 'parentid'=>$parentid, 'm'=>'test', 'c'=>'test', 'a'=>'edit_test', 'data'=>'', 'listorder'=>0, 'display'=>'1'));
 $menu_db->insert(array('name'=>'delete_test', 'parentid'=>$parentid, 'm'=>'test', 'c'=>'test', 'a'=>'delete_test', 'data'=>'', 'listorder'=>0, 'display'=>'1'));
 $language = array('test'=>'测试','add_test'=>'添加测试','edit_test'=>'编辑测试','delete_test'=>'删除测试');
 ```
-之后的步骤就可以参考第六步了。因为模块已经安装了，所以先把**test模块卸载再重新安装**。
+之后的步骤就可以参考第六步了。因为模块已经安装了，所以先把 **test模块卸载再重新安装**。
 ###9.新建表和模型类文件
-还是打开**install**目录，新建个**model.php**文件.
+还是打开 **install** 目录，新建个**model.php** 文件.
 写上以下代码
 ```php
 defined('IN_PHPCMS') or exit('Access Denied');
 defined('INSTALL') or exit('Access Denied');
 return array('test');
 ```
-这个文件的作用是**用来定义模块的表名**，*在安装时模块时，系统会根据这个数组的值调用同目录下的同名 **sql** 文件*。
+这个文件的作用是 **用来定义模块的表名**，*在安装时模块时，系统会根据这个数组的值调用同目录下的同名 **sql** 文件*。
 而在 **phpcms** 中，**一个表对应一个模型类文件**。所在，我们在**model**文件中的返回数组中添加了一个值，对应的，我们就要*新建一个同名的 **sql** 文件和一个 **model** 文件*。
 我们先在 **install** 目录下新建一个 **test.sql** 文件
 ```sql
