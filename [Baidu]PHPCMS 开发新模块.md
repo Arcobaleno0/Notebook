@@ -1,19 +1,19 @@
 #PHPCMS 开发新模块
 ###1.了解模块的主要目录结构
-**classes** 								类目录
-**functions** 								函数目录
-**install** 									安装目录
-   **-languages**                           	模块的语言文件   
-   **-templdates**                        		模块前台使用模板   
-   **-config.inc.php**                     		模块信息，填写模块名称、简介、开发者信息  
-   **-extention.inc.php**               		后前管理菜单生成文件  
-   **-model.php**                         		模型定义文件   
-   **-moduels.sql**                       		用于向数据库插入 模块的配置信息，
-**templates** 								后台模板目录
-**uninstall** 								卸载模块相关文件目录
-   **-extention.inc.php**             			后前管理菜单生成文件   
-   **-model.php** 								模型定义文件
-**index.php** 								是前台浏览调用的类文件
+**classes** 								类目录<br>
+**functions** 								函数目录<br>
+**install** 									安装目录<br>
+   **-languages**                           	模块的语言文件<br>   
+   **-templdates**                        		模块前台使用模板<br>   
+   **-config.inc.php**                     		模块信息，填写模块名称、简介、开发者信息<br>  
+   **-extention.inc.php**               		后前管理菜单生成文件<br>  
+   **-model.php**                         		模型定义文件<br>   
+   **-moduels.sql**                       		用于向数据库插入 模块的配置信息，<br>
+**templates** 								后台模板目录<br>
+**uninstall** 								卸载模块相关文件目录<br>
+   **-extention.inc.php**             			后前管理菜单生成文件<br>   
+   **-model.php** 								模型定义文件<br>
+**index.php** 								是前台浏览调用的类文件<br>
 
 ###2.建立模块的基本目录结构
 新建个**test**模块，再在**phpcms/modules**目录下新建个test目录
