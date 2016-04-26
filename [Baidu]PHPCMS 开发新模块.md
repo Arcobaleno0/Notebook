@@ -119,6 +119,8 @@ class test_model extends model {
    	}
 }
 ```
+`$this->db`中所支持的方法请参照 **phpcms/libs/classes/model.class.php** 中方法
+
 ###10.创建自己的语言文件
 考虑到多国语言，我们就得**为模块新建语言文件**。**模块的语言文件名和模块的名称一样**，在模块的 **install** 目录下的 **languages** 目录对应的语言新建一个 **test.lang.php** 文件，在安装时，系统会自动把文件拷贝到 **phpcms/languages** 下对应的语言目录下（可以参考别的多语言模块）。
 ###11.配置卸载文件
@@ -129,6 +131,5 @@ class test_model extends model {
 
 ###注意事项
 **config.inc.php** 中的`$module`、**目录名**、**modules.sql** 中的字段 **module** 三个值必需一样.
-模块的安装的处理代码，可以参考 **phpcms/modules/admin/module.php** 和**phpcms/modules/admin/classes/module_api.class.php** 这两个文件
-如有不明之处，可以到原网页进行留言，作者会第一时间进行解答
-
+模块的安装的处理代码，可以参考 **phpcms/modules/admin/module.php** 和**phpcms/modules/admin/classes/module_api.class.php** 这两个文件<br>
+数据库操作方面，可以详细参考[PHPCMS二次开发文档](http://v9.help.phpcms.cn/html/2010/moudle_0929/93.html)
