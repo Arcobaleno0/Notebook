@@ -98,13 +98,22 @@ return array('test');
 而在 **phpcms** 中，**一个表对应一个模型类文件**。所在，我们在**model**文件中的返回数组中添加了一个值，对应的，我们就要*新建一个同名的 **sql** 文件和一个 **model** 文件*。
 我们先在 **install** 目录下新建一个 **test.sql** 文件
 ```sql
-DROP TABLE IF EXISTS `phpcms_test`;
-CREATE TABLE `phpcms_test` (
-  `id` mediumint(8) unsigned DEFAULT '0',
-  `name` char(20) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `ip` (`ip`)
-) TYPE=MyISAM COMMENT '测试表';
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE IF NOT EXISTS `test` (
+  `id` int(10) unsigned NOT NULL auto_increment,
+  `catid` int(10) unsigned NOT NULL default '0' COMMENT '栏目id',
+  `siteid` mediumint(6) unsigned NOT NULL default '0' COMMENT '站点ID',
+  `contentid` int(10) unsigned NOT NULL default '0' COMMENT '文章id',
+  `total` int(10) unsigned NOT NULL default '0' COMMENT '总数',
+  `n1` int(10) unsigned NOT NULL default '0',
+  `n2` int(10) unsigned NOT NULL default '0',
+  `n3` int(10) unsigned NOT NULL default '0',
+  `lastupdate` int(10) unsigned NOT NULL default '0' COMMENT '最后更新时间',
+  PRIMARY KEY  (`id`),
+  KEY `total` (`total`),
+  KEY `lastupdate` (`lastupdate`),
+  KEY `catid` (`catid`,`siteid`,`contentid`)
+) TYPE=MyISAM;
 ```
 再在 **phpcms/model** 目录新建个 **test_model.class.php**文件
 ```php
