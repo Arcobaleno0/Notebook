@@ -99,7 +99,7 @@ return array('test');
 我们先在 **install** 目录下新建一个 **test.sql** 文件
 ```sql
 DROP TABLE IF EXISTS `phpcms_test`;
-CREATE TABLE `phpcms_test (
+CREATE TABLE `phpcms_test` (
   `id` mediumint(8) unsigned DEFAULT '0',
   `name` char(20) NOT NULL,
   PRIMARY KEY (`id`),
