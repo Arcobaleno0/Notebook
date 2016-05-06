@@ -179,8 +179,8 @@ class test_model extends model {
 后台控制控制器需要加载 **admin** 模块下的 **admin** 类，并继承该类  
 ```php
 <?php                 
-   defined('IN_PHPCMS') or exit('No permission resources.');                  
-   pc_base::load_app_class('admin','admin',0);//加载admin模块下的admin类库                  
+   defined('IN_PHPCMS') or exit('No permission resources.');               
+   pc_base::load_app_class('admin','admin',0);//加载 admin 模块下的 admin 类库            
    class mytest_admin extends admin {   
                 //这个控制器需要登录后台才可以访问                  
    }  
