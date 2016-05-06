@@ -142,3 +142,47 @@ class test_model extends model {
 **config.inc.php** 中的`$module`、**目录名**、**modules.sql** 中的字段 **module** 三个值必需一样.
 模块的安装的处理代码，可以参考 **phpcms/modules/admin/module.php** 和**phpcms/modules/admin/classes/module_api.class.php** 这两个文件<br>
 数据库操作方面，可以详细参考[PHPCMS二次开发文档](http://v9.help.phpcms.cn/html/2010/moudle_0929/93.html)
+
+#phpcms v9 二次开发：
+**在一个项目开发中遇到需要二次开发，但我们需要了解 `load_model`，`load_app_class`， `load_sys_func` 的含义：**
+
+###1.调用数据库模型
+//从 **“phpcms/model/”** 目录下加载模型类文件
+`$this->db = pc_base::load_model('test_model');`
+其中`$this->db`中所支持的方法请参照 **phpcms/libs/classes/model.class.php** 中方法
+
+###2.加载系统类
+`$http = pc_base::load_sys_class('http');` //实例化 **http** 类
+`pc_base::load_sys_class('format', '', 0);` //调用 **form** 类，不进行实例化操作
+
+###3.加载系统函数库
+`pc_base::load_sys_func('mail');` 调用 **mail** 函数包
+
+###4. 加载模块类  
+`$test = pc_base::load_app_class('classname','test');` //实例化test模块下 classname类  
+
+###5.加载模块函数库  
+`pc_base::load_app_func('global','test');` 调用test模块的global函数包  
+特点：
+`load_sys_class()`:从    **"phpcms/libs/classes/"**   加载类库文件  
+`load_sys_func()`:从    **"phpcms/libs/functions/"**   加载函数库文件  
+`load_app_class()`:从  **"phpcms/modules/模块名/classes/"**  加载模块类库文件  
+`load_app_func()`:从  **"phpcms/modules/模块名/functions/"**  加载模块函数库文件 
+
+###6.加载前台模板  
+`include template('test', 'mytest', 'default');`
+
+###7.加载后台模板  
+`include $this->admin_tpl('mytest_admin_list');` 
+
+###8.权限控制  
+后台控制控制器需要加载 **admin** 模块下的 **admin** 类，并继承该类  
+```php
+<?php                 
+   defined('IN_PHPCMS') or exit('No permission resources.');                  
+   pc_base::load_app_class('admin','admin',0);//加载admin模块下的admin类库                  
+   class mytest_admin extends admin {   
+                //这个控制器需要登录后台才可以访问                  
+   }  
+?>
+```
